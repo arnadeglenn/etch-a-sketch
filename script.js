@@ -52,10 +52,21 @@ function gridPick() {
     } else {
         gridChange(squareChoice);
     }
-    };
+};
+
+function rgbRandomFunc() {
+    let redRandom = Math.floor(Math.random() * 256);
+    let greenRandom = Math.floor(Math.random() * 256);
+    let blueRandom = Math.floor(Math.random() * 256);
+    let rgbRandom = `rgb(${redRandom}, ${greenRandom}, ${blueRandom})`;
+    return rgbRandom
+}
 
 
 gridCreation();
 numberSquare.addEventListener('click', gridPick);
 drawingStart.addEventListener('click', mouseSketch);
 drawingRemove.addEventListener('click', eraseDrawing);
+
+let rgbColor = rgbRandomFunc();
+console.log(rgbColor);
