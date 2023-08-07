@@ -1,14 +1,1 @@
-Hover Function
-Create a function called mouseSketch
-Add query selector to 'square' class name
-Create a for loop that goes from 1-257
-Create 'squareAppend' event listener with event being mouseenter
-Create anonymous function that changes CSS of 'square${i}'
-    to black background-color of each div
-Create a for loop that goes from 1-257
-Create 'squareAppend' event listener with event being    
-  mouseleave
-Create anonymous unction that keeps background-color black
-
-Create a event listener button that fires hover function
-    with click as the event
+My pseudocode was wrong so it's all good I guess 

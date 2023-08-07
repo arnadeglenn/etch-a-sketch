@@ -1,8 +1,12 @@
+//Query Selectors
 const grid = document.querySelector('#grid');
 const drawingStart = document.querySelector('#drawingStart');
 const drawingRemove = document.querySelector('#drawingRemove');
 const numberSquare = document.querySelector('#numberSquare');
+const blackWhiteButton = document.querySelector('#blackWhiteButton');
+const rainbowButton = document.querySelector('#rainbowButton');
 
+//Functions
 function gridCreation() {
     for (let i=1; i<257; i++) {
         const square = document.createElement('div');
@@ -11,22 +15,6 @@ function gridCreation() {
         square.style.width = '32px';
         grid.appendChild(square);
 }
-};
-
-function mouseSketch() {
-    const squareAppend = document.querySelectorAll('.square');
-    squareAppend.forEach(function(square) {
-        square.addEventListener('mouseenter', e => {
-        square.style.background = 'black';
-    });
-});
-};
-
-function eraseDrawing() {
-    const squareAppend = document.querySelectorAll('.square');
-    squareAppend.forEach(function(square) {
-        square.style.background = 'white';
-    });
 };
 
 function gridChange(squareChoice) {
@@ -54,19 +42,51 @@ function gridPick() {
     }
 };
 
+function mouseSketch() {
+    const squareAppend = document.querySelectorAll('.square');
+    squareAppend.forEach(function(square) {
+        square.addEventListener('mouseenter', e => {
+        square.style.background = 'black';
+    });
+});
+};
+
 function rgbRandomFunc() {
     let redRandom = Math.floor(Math.random() * 256);
     let greenRandom = Math.floor(Math.random() * 256);
     let blueRandom = Math.floor(Math.random() * 256);
     let rgbRandom = `rgb(${redRandom}, ${greenRandom}, ${blueRandom})`;
-    return rgbRandom
+    return rgbRandom;
 }
 
+function rainbowDraw() {
+    const squareAppend = document.querySelectorAll('.square');
+    squareAppend.forEach(function(square) {
+        square.addEventListener('mouseenter', e => {
+        square.style.background = rgbRandomFunc();
+    });
+});
+};
 
+function eraseDrawing() {
+    const squareAppend = document.querySelectorAll('.square');
+    squareAppend.forEach(function(square) {
+        square.style.background = 'white';
+    });
+};
+
+//Function Call
 gridCreation();
+
+//Event Listeners
 numberSquare.addEventListener('click', gridPick);
 drawingStart.addEventListener('click', mouseSketch);
 drawingRemove.addEventListener('click', eraseDrawing);
-
-let rgbColor = rgbRandomFunc();
-console.log(rgbColor);
+blackWhiteButton.addEventListener('click', e => {
+    eraseDrawing();
+    mouseSketch();
+});
+rainbowButton.addEventListener('click', e => {
+    eraseDrawing();
+    rainbowDraw();
+});
